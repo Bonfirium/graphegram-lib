@@ -16,4 +16,9 @@ describe('connection to graphigram', () => {
 			throw err;
 		}).then(() => done());
 	}).timeout(15000);
+	it('send', (done) => {
+		session.send('vova.danilkovich', 'qwe').catch((err) => {
+			throw err;
+		}).then(() => done());
+	}).timeout(15000);
 });
