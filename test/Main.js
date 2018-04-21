@@ -12,11 +12,8 @@ describe('connection to graphigram', () => {
 		session.close();
 	});
 	it('successful', (done) => {
-		session.auth(username, postingKey, 'qweasd').catch((err) => {
+		session.signUp(username, postingKey, 'qweasd').catch((err) => {
 			throw err;
 		}).then(() => done());
-	});
+	}).timeout(15000);
 });
-
-
-// golos.auth.verify(username, password)
