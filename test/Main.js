@@ -6,11 +6,16 @@ const username = config.test.username;
 const postingKey = config.test.postingKey;
 
 const session = new Session();
-session.auth(username, postingKey, 'qweasd').catch((err) => {
-	console.log(`Error: ${err}`);
-	session.close();
-}).then(() => {
-	session.close();
+
+describe('connection to graphigram', () => {
+	after(() => {
+		session.close();
+	});
+	it('successful', (done) => {
+		session.auth(username, postingKey, 'qweasd').catch((err) => {
+			throw err;
+		}).then(() => done());
+	});
 });
 
 

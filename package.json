@@ -14,7 +14,7 @@
 		"browserify": "mkdirp build && NODE_ENV=production browserify cjs/index.js --standalone echo_ws -o build/echojs-ws.js -d",
 		"postbrowserify": "NODE_ENV=production uglifyjs --compress --mangle --sequences --drop_console --mangle-props --screw-ie8 --output build/echojs-ws.min.js -- build/echojs-ws.js",
 		"lint": "eslint . --fix",
-		"test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive"
+		"test": "BABEL_ENV=test mocha --compilers js:babel-core/register --recursive --exit"
 	},
 	"repository": {
 		"type": "git",
