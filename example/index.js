@@ -31,16 +31,16 @@ const question = (query) => new Promise((resolve) => {
 	while (work) {
 		const command = await question(' >> ');
 		switch (command) {
-			case 'getAllInterlocutors':
+			case 'chats':
 				console.log(await session.getAllInterlocutors());
 				break;
-			case 'getDREPermlink':
+			case 'dre':
 				console.log(await session.getDRE());
 				break;
 			case 'exit':
 				work = false;
 				break;
-			case 'createChannel': {
+			case 'connect': {
 				const username = await question(' >> username: ');
 				await session.createChannel(username);
 				console.log('Invite has been sent. Wait for response');
@@ -50,6 +50,10 @@ const question = (query) => new Promise((resolve) => {
 				const username = await question(' >> username: ');
 				const message = await question(' >> message: ');
 				await session.sendMessage(username, message);
+				break;
+			}
+			case 'receive': {
+				console.log(await session.receiveMessages(await question(' >> username: ')));
 				break;
 			}
 			default:
