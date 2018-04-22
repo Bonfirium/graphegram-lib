@@ -25,13 +25,23 @@ const question = (query) => new Promise((resolve) => {
 (async () => {
 	const session = new Session();
 	await session.signUp(users[0].username, users[0].postingKey);
-	console.log('commands:');
-	console.log('\tgetAllInterlocutors');
-	while (true) {
-		const command = await question('\nEnter command: ');
+	// console.log('commands:');
+	// console.log('\tgetAllInterlocutors');
+	let work = true;
+	while (work) {
+		const command = await question(' >> ');
 		switch (command) {
 			case 'getAllInterlocutors':
 				console.log(await session.getAllInterlocutors());
+				break;
+			case 'getDREPermlink':
+				console.log(await session.getDRE());
+				break;
+			case 'exit':
+				work = false;
+				break;
+			default:
+				console.error('unknown command');
 				break;
 		}
 	}
