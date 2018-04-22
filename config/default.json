@@ -1,6 +1,14 @@
 {
 	"test": {
-		"username": "YOU_USERNAME",
-		"postingKey": "YOU_POSTING_PRIVATE_KEY"
+		"users": [
+			{
+				"username": "YOU_USERNAME",
+				"postingKey": "YOU_POSTING_PRIVATE_KEY"
+			},
+			{
+				"username": "ANOTHER_USER_NAME",
+				"postingKey": "THEY_POSTING_PRIVATE_KEY"
+			}
+		]
 	}
 }

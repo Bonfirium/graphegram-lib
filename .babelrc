@@ -1,8 +1,5 @@
 {
-	"presets": [
-		"./tools/es2015Preset",
-		"stage-1"
-	],
+	"presets": ["es2015", "stage-0"],
 	"env": {
 		"cjs": {
 			"plugins": [

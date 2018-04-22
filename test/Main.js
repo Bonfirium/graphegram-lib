@@ -1,9 +1,7 @@
-import golos from 'golos-js';
 import { Session } from '../lib';
 import config from 'config';
 
-const username = config.test.username;
-const postingKey = config.test.postingKey;
+const { users } = config.test;
 
 const session = new Session();
 
@@ -12,13 +10,21 @@ describe('connection to graphigram', () => {
 		session.close();
 	});
 	it('successful', (done) => {
-		session.signUp(username, postingKey, 'qweasd').catch((err) => {
+		session.signUp(users[0].username, users[0].postingKey, 'qweasd').catch((err) => {
 			throw err;
 		}).then(() => done());
 	}).timeout(15000);
-	it('send', (done) => {
-		session.send('vova.danilkovich', 'qwe').catch((err) => {
-			throw err;
-		}).then(() => done());
+	it('hasConnection', (done) => {
+		session.hasConnectionWithUser(users[1].username)
+			.then(console.log)
+			.then(() => done())
+			.catch((err) => {
+				throw err;
+			});
 	}).timeout(15000);
+	it('channel creation', (done) => {
+		session.createChannel(users[1].username)
+			.then(console.log)
+			.then(() => done());
+	})
 });
