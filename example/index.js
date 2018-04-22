@@ -29,7 +29,7 @@ const question = (query) => new Promise((resolve) => {
 	// console.log('\tgetAllInterlocutors');
 	let work = true;
 	while (work) {
-		const command = await question(' >> ');
+		const command = await question(` ${session.userName} >> `);
 		switch (command) {
 			case 'chats':
 				console.log(await session.getAllInterlocutors());
@@ -39,6 +39,10 @@ const question = (query) => new Promise((resolve) => {
 				break;
 			case 'exit':
 				work = false;
+				break;
+			case 'swap':
+				users.push(users.shift());
+				await session.signUp(users[0].username, users[0].postingKey);
 				break;
 			case 'connect': {
 				const username = await question(' >> username: ');
