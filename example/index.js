@@ -40,6 +40,18 @@ const question = (query) => new Promise((resolve) => {
 			case 'exit':
 				work = false;
 				break;
+			case 'createChannel': {
+				const username = await question(' >> username: ');
+				await session.createChannel(username);
+				console.log('Invite has been sent. Wait for response');
+				break;
+			}
+			case 'send': {
+				const username = await question(' >> username: ');
+				const message = await question(' >> message: ');
+				await session.sendMessage(username, message);
+				break;
+			}
 			default:
 				console.error('unknown command');
 				break;
