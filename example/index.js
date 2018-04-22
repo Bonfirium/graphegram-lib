@@ -34,6 +34,10 @@ const question = (query) => new Promise((resolve) => {
 			case 'chats':
 				console.log(await session.getAllInterlocutors());
 				break;
+			case 'key':
+				const username = await question(' >> username: ');
+				console.log(await session._getKey(username));
+				break;
 			case 'dre':
 				console.log(await session.getDRE());
 				break;
